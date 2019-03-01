@@ -15,24 +15,18 @@ function LazyLoad(options) {
         let address = element.getAttribute(self.settings.sourceAttr);
         
         return new Promise ((resolve) => {
-            console.log(element.getAttribute('src'));
-            element.addEventListener('load', () => {
-                setTimeout(element.setAttribute('src', address), 1000);
-                console.log(element);
-            });
+            setTimeout(() => {
+                console.log('1');
+                element.setAttribute('src', address);
+            }, 1000);
         });
     };
 
     for(let i = 0; i < lazyItems.length; i++) {
-        // if(lazyItems[i].tagName === "IMG") {
-        //     addSrc(lazyItems[i]);
-        // }
-        lazyItems[i].onload = function() {
-            console.log('load');
-        };
-    };
-
-    
+        if(lazyItems[i].tagName === "IMG") {
+            addSrc(lazyItems[i]);
+        }
+    }; 
 };
 
 export default LazyLoad;
