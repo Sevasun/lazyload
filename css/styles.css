@@ -29,6 +29,9 @@ img {
   padding: 50px 10%;
   color: #fff;
   position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 
 .banner:before {
