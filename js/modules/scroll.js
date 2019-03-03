@@ -3,7 +3,8 @@ import merge from './common';
 function InViewport(options) {
     let defaultOptions = {
         target: '.viewport',
-        mode: 0,
+        addClass: 'in-viewport',
+        mode: 200, // enter number of pixels that must appear in viewport for adding class
         toggle: true
     }
 
@@ -19,8 +20,8 @@ function InViewport(options) {
     }
 
     function getPosition(item) {
-        let top = item.getBoundingClientRect().top - window.innerHeight;
-        let bottom = item.getBoundingClientRect().top + item.offsetHeight;
+        let top = item.getBoundingClientRect().top - window.innerHeight + self.settings.mode;
+        let bottom = item.getBoundingClientRect().top + item.offsetHeight - self.settings.mode;
         
         let position = {
             'top': top,
@@ -32,21 +33,20 @@ function InViewport(options) {
     function appearInViewport(item) {
         let position = getPosition(item);
         if(position.top >= 0 && position.bottom <= 0) {
-            item.classList.add('in-viewport');
+            item.classList.add(self.settings.addClass);
         } else if (position.bottom >= 0 && position.top <= 0) {
-            item.classList.add('in-viewport');
+            item.classList.add(self.settings.addClass);
         }
     }
 
     function toggleInViewport(item) {
         let position = getPosition(item);
-        let active = false;
         if (position.top >= 0 && position.bottom <= 0) {
-            item.classList.add('in-viewport');
+            item.classList.add(self.settings.addClass);
         } else if (position.bottom >= 0 && position.top <= 0) {
-            item.classList.add('in-viewport');
+            item.classList.add(self.settings.addClass);
         } else {
-            item.classList.remove('in-viewport');
+            item.classList.remove(self.settings.addClass);
         }
     };
 
