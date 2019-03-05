@@ -1,4 +1,5 @@
 import merge from './common';
+import InViewport from './scroll'
 
 function LazyLoad(options) {
     let defaultOptions = {
@@ -48,8 +49,21 @@ function LazyLoad(options) {
     //     }
     // }
 
+    let loadViewport = new InViewport({
+        // target: document.querySelectorAll(`[data-src]`)
+    });
+
+    console.log(loadViewport);
+    console.log(lazyItems);
+
+    // Object.defineProperty(loadViewport, 'loadImage', set: {
+    //     loadImg(this.settings.target);
+    // });
+
     if(this.settings.loadType === 'all') {
         loadAll(lazyItems);
+    } else if (this.settings.loadType === 'viewport') {
+
     }
 };
 

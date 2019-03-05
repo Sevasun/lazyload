@@ -1,4 +1,5 @@
 import merge from './common';
+// import LazyLoad from './lazyload'
 
 function InViewport(options) {
     let defaultOptions = {
@@ -77,6 +78,10 @@ function InViewport(options) {
             }
         });
     };
+
+    // let lazy = new LazyLoad();
+
+    // console.log(lazy);
 }
 
 export default InViewport;
